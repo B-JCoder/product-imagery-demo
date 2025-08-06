@@ -293,22 +293,22 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F1D9B1]/20 via-white to-[#F1D9B1]/10">
+    <div className="min-h-screen bg-[#D6B8A1]/30 backdrop-blur-md shadow-md border-b border-white/20 via-white to-[#F1D9B1]/10">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-[#D6B8A1]/90 backdrop-blur-md shadow-md border-b border-white/20">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
             <motion.div
               variants={staggerContainer}
               initial="initial"
               animate="animate"
-              className="space-y-6 lg:space-y-8"
+              className="space-y-4 lg:space-y-6"
             >
               <motion.h1
                 variants={fadeInUp}
-                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
+                className="text-3xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight"
               >
                 Next-Level Product
                 <br />
@@ -381,7 +381,7 @@ export default function HomePage() {
                     {[1, 2, 3, 4, 5].map((i) => (
                       <Star
                         key={i}
-                        className="w-5 h-5 fill-yellow-400 text-yellow-400"
+                        className="w-6 h-5 fill-yellow-300 text-yellow-300"
                       />
                     ))}
                   </div>

@@ -1465,6 +1465,9 @@ video {
 .gap-8 {
   gap: 2rem;
 }
+.gap-10 {
+  gap: 2.5rem;
+}
 .-space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(-0.5rem * var(--tw-space-x-reverse));
@@ -1844,6 +1847,12 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
 }
+.bg-\[\#D6B8A1\]\/50 {
+  background-color: rgb(214 184 161 / 0.5);
+}
+.bg-\[\#D6B8A1\]\/30 {
+  background-color: rgb(214 184 161 / 0.3);
+}
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -1984,6 +1993,12 @@ video {
 }
 .fill-yellow-400 {
   fill: #facc15;
+}
+.fill-yellow-200 {
+  fill: #fef08a;
+}
+.fill-yellow-300 {
+  fill: #fde047;
 }
 .object-contain {
   object-fit: contain;
@@ -2374,6 +2389,18 @@ video {
 .text-\[\#D6B8A1\] {
   --tw-text-opacity: 1;
   color: rgb(214 184 161 / var(--tw-text-opacity, 1));
+}
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity, 1));
+}
+.text-yellow-200 {
+  --tw-text-opacity: 1;
+  color: rgb(254 240 138 / var(--tw-text-opacity, 1));
+}
+.text-yellow-300 {
+  --tw-text-opacity: 1;
+  color: rgb(253 224 71 / var(--tw-text-opacity, 1));
 }
 .line-through {
   text-decoration-line: line-through;
@@ -3968,6 +3995,11 @@ html {
     line-height: 1.75rem;
   }
 
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
   .data-\[state\=open\]\:sm\:slide-in-from-bottom-full[data-state="open"] {
     --tw-enter-translate-y: 100%;
   }
@@ -4122,6 +4154,10 @@ html {
 
   .lg\:gap-8 {
     gap: 2rem;
+  }
+
+  .lg\:gap-12 {
+    gap: 3rem;
   }
 
   .lg\:space-y-6 > :not([hidden]) ~ :not([hidden]) {
