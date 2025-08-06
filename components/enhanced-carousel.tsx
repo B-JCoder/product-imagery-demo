@@ -39,7 +39,7 @@ export default function EnhancedCarousel({ images, autoPlay = true, interval = 4
   }, [autoPlay, interval])
 
   return (
-    <div className="relative w-full h-[600px] perspective-1000 overflow-hidden rounded-3xl">
+    <div className="relative w-full h-[500px] perspective-1000 overflow-hidden rounded-3xl">
       <div className="relative w-full h-full preserve-3d">
         {images.map((image, index) => {
           const offset = index - currentIndex
