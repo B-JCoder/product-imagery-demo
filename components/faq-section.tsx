@@ -88,7 +88,7 @@ const faqs: FAQ[] = [
   }
 ]
 
-const categories = ["All", "Services", "Process", "Delivery", "Pricing", "Technical", "E-commerce", "Legal"]
+
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -146,19 +146,9 @@ export default function FAQSection() {
           viewport={{ once: true }}
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 text-sm ${
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-[#F1D9B1] to-[#E6C89A] text-gray-800 shadow-lg'
-                  : 'bg-white text-gray-600 hover:bg-[#F1D9B1]/20 shadow-md border border-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+         
+         
+       
         </motion.div>
 
         <motion.div

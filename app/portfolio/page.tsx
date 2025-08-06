@@ -31,7 +31,7 @@ const scaleIn = {
 }
 
 export default function PortfolioPage() {
-  const [selectedCategory, setSelectedCategory] = useState('All')
+  
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
   const heroImages = [
@@ -117,11 +117,9 @@ export default function PortfolioPage() {
     }
   ]
 
-  const categories = ['All', 'Beauty & Cosmetics', 'Food & Beverage', 'Health & Wellness', 'Fashion & Accessories']
 
-  const filteredItems = selectedCategory === 'All' 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === selectedCategory)
+
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F1D9B1]/20 via-white to-[#F1D9B1]/10">
@@ -182,22 +180,8 @@ export default function PortfolioPage() {
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#F1D9B1]/30 to-[#E6C89A]/30">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            {/* Category Filters */}
-            <div className="flex flex-wrap gap-3">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                    selectedCategory === category
-                      ? 'bg-gradient-to-r from-[#F1D9B1] to-[#E6C89A] text-gray-800 shadow-lg'
-                      : 'bg-white text-gray-600 hover:bg-[#F1D9B1]/20 shadow-md'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
+         
+            
 
             {/* View Mode Toggle */}
             <div className="flex items-center space-x-2 bg-white rounded-lg p-1 shadow-md">
@@ -227,99 +211,86 @@ export default function PortfolioPage() {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className={viewMode === 'grid' 
-              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              : "space-y-8"
-            }
-          >
-            {filteredItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                variants={scaleIn}
-                whileHover={{ y: -10, scale: viewMode === 'grid' ? 1.02 : 1 }}
-                className="group cursor-pointer"
-              >
-                {viewMode === 'grid' ? (
-                  <Card className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-0">
-                    <CardContent className="p-0 relative">
-                      <div className="aspect-square overflow-hidden bg-gradient-to-br from-[#F1D9B1]/20 to-white">
-                        <Image 
-                          src={item.src || "/placeholder.svg"} 
-                          alt={item.title} 
-                          width={400} 
-                          height={400} 
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="absolute bottom-6 left-6 right-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Badge className="bg-[#F1D9B1]/90 text-gray-800 border-none mb-3 shadow-lg">
-                          {item.category}
+     <section className="py-20 px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto">
+    <motion.div
+      variants={staggerContainer}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      className={viewMode === 'grid' 
+        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        : "space-y-8"
+      }
+    >
+      {portfolioItems.map((item) => (
+        <motion.div
+          key={item.id}
+          variants={scaleIn}
+          whileHover={{ y: -10, scale: viewMode === 'grid' ? 1.02 : 1 }}
+          className="group cursor-pointer"
+        >
+          {viewMode === 'grid' ? (
+            <Card className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border-0">
+              <CardContent className="p-0 relative">
+                <div className="aspect-square overflow-hidden bg-gradient-to-br from-[#F1D9B1]/20 to-white">
+                  <Image 
+                    src={item.src || "/placeholder.svg"} 
+                    alt={item.title} 
+                    width={400} 
+                    height={400} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-6 left-6 right-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 className="font-bold text-lg mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-200 mb-3">{item.client}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.map((tag, tagIndex) => (
+                      <span key={tagIndex} className="text-xs bg-white/20 px-2 py-1 rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ) : (
+            <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-0">
+              <CardContent className="p-0">
+                <div className="grid md:grid-cols-3 gap-6 p-6">
+                  <div className="aspect-square overflow-hidden rounded-lg bg-gradient-to-br from-[#F1D9B1]/20 to-white">
+                    <Image 
+                      src={item.src || "/placeholder.svg"} 
+                      alt={item.title} 
+                      width={300} 
+                      height={300} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="md:col-span-2 space-y-4">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                    <p className="text-[#B8860B] font-medium mb-3">Client: {item.client}</p>
+                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {item.tags.map((tag, tagIndex) => (
+                        <Badge key={tagIndex} className="bg-[#F1D9B1]/20 text-[#B8860B] border-none">
+                          {tag}
                         </Badge>
-                        <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                        <p className="text-sm text-gray-200 mb-3">{item.client}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {item.tags.map((tag, tagIndex) => (
-                            <span key={tagIndex} className="text-xs bg-white/20 px-2 py-1 rounded">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ) : (
-                  <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-0">
-                    <CardContent className="p-0">
-                      <div className="grid md:grid-cols-3 gap-6 p-6">
-                        <div className="aspect-square overflow-hidden rounded-lg bg-gradient-to-br from-[#F1D9B1]/20 to-white">
-                          <Image 
-                            src={item.src || "/placeholder.svg"} 
-                            alt={item.title} 
-                            width={300} 
-                            height={300} 
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                        <div className="md:col-span-2 space-y-4">
-                          <div>
-                            <Badge className="bg-[#F1D9B1]/20 text-[#B8860B] border-none mb-2">
-                              {item.category}
-                            </Badge>
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                            <p className="text-[#B8860B] font-medium mb-3">Client: {item.client}</p>
-                          </div>
-                          <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                          <div className="flex flex-wrap gap-2">
-                            {item.tags.map((tag, tagIndex) => (
-                              <Badge key={tagIndex} className="bg-[#F1D9B1]/20 text-[#B8860B] border-none">
-                                {tag}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {filteredItems.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-xl text-gray-500">No projects found in this category.</p>
-            </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           )}
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</section>
+
 
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#F1D9B1]/20 via-[#E6C89A]/10 to-white">

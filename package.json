@@ -77,5 +77,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B-JCoder/product-imagery-demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/B-JCoder/product-imagery-demo/issues"
+  },
+  "homepage": "https://github.com/B-JCoder/product-imagery-demo#readme",
   "description": ""
 }
